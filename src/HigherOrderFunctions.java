@@ -23,10 +23,32 @@ public class HigherOrderFunctions {
 
   }
 
+  /**
+   * Implementation of filter function.
+   *
+   * @param lst list of generic type A
+   * @param returnList list of generic type A
+   * @param predicate functional interface
+   * @param <A> generic type A
+   * @return list of A
+   */
+  public <A> List<A> filter(List<A> lst, List<A> returnList, Predicate<A> predicate) {
+    if (lst.isEmpty()) {
+      return returnList;
+    } else {
+      A h = lst.remove(0);
+      if (predicate.test(h)) {
+        returnList.add(h);
+      }
+      filter(lst, returnList, predicate);
+    }
+    return returnList;
+  }
+
 }
 
 /**
- * Functional interface with simple abstract method.
+ * Functional interface with single abstract method.
  *
  * @param <A> generic param
  * @param <B> generic param
@@ -36,6 +58,15 @@ interface Function<A, B> {
   B apply(A a);
 }
 
+/**
+ * Functional interface with single abstract method.
+ *
+ * @param <A> generic param
+ */
+interface Predicate<A> {
+
+  boolean test(A a);
+}
 
 
 
