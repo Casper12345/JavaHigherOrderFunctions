@@ -53,6 +53,7 @@ public class HigherOrderFunctions {
  * @param <A> generic param
  * @param <B> generic param
  */
+@FunctionalInterface
 interface Function<A, B> {
 
   B apply(A a);
@@ -63,6 +64,7 @@ interface Function<A, B> {
  *
  * @param <A> generic param
  */
+@FunctionalInterface
 interface Predicate<A> {
 
   boolean test(A a);
