@@ -45,6 +45,25 @@ public class HigherOrderFunctions {
     return returnList;
   }
 
+  /**
+   * Implementation of flatten method.
+   *
+   * @param lst list of lists.
+   * @param returnList list of A.
+   * @param <A> generic param A.
+   * @return list of A.
+   */
+  public <A> List<A> flatten(List<List<A>> lst, List<A> returnList) {
+    if (lst.isEmpty()) {
+      return returnList;
+    } else {
+      returnList.addAll(lst.remove(0));
+      flatten(lst, returnList);
+    }
+    return returnList;
+
+  }
+
 }
 
 /**
